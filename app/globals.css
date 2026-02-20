@@ -1,0 +1,561 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   MARS BITES — GOLD & WHITE SPACE THEME
+   ============================================ */
+
+/* Always start at the top — disable browser scroll restoration */
+html {
+  overflow-anchor: none;
+}
+
+:root {
+  /* Deep space background — rich dark navy-black */
+  --background: oklch(0.04 0.008 250);
+  --foreground: oklch(0.96 0.005 80);
+  /* Warm white */
+  --card: oklch(0.07 0.01 250);
+  --card-foreground: oklch(0.96 0.005 80);
+  --popover: oklch(0.07 0.01 250);
+  --popover-foreground: oklch(0.96 0.005 80);
+
+  /* PRIMARY = Gold */
+  --primary: oklch(0.78 0.16 84);
+  --primary-foreground: oklch(0.05 0.01 30);
+
+  /* ACCENT = warm cream/champagne */
+  --accent: oklch(0.88 0.06 90);
+  --accent-foreground: oklch(0.05 0.01 30);
+
+  --secondary: oklch(0.55 0.08 265);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.18 0.01 250);
+  --muted-foreground: oklch(0.6 0.01 80);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.18 0.02 250);
+  --input: oklch(0.1 0.01 250);
+  --ring: oklch(0.78 0.16 84);
+  --radius: 0.75rem;
+
+  --chart-1: oklch(0.78 0.16 84);
+  --chart-2: oklch(0.88 0.06 90);
+  --chart-3: oklch(0.55 0.08 265);
+  --chart-4: oklch(0.6 0.12 30);
+  --chart-5: oklch(0.65 0.1 190);
+
+  --sidebar: oklch(0.06 0.01 250);
+  --sidebar-foreground: oklch(0.96 0.005 80);
+  --sidebar-primary: oklch(0.78 0.16 84);
+  --sidebar-primary-foreground: oklch(0.05 0.01 30);
+  --sidebar-accent: oklch(0.12 0.01 250);
+  --sidebar-accent-foreground: oklch(0.96 0.005 80);
+  --sidebar-border: oklch(0.18 0.02 250);
+  --sidebar-ring: oklch(0.78 0.16 84);
+}
+
+.dark {
+  /* Deep space: near-black with a cosmic blue-violet tint */
+  --background: oklch(0.04 0.008 250);
+  --foreground: oklch(0.96 0.005 80);
+  /* Warm neutral white */
+
+  --card: oklch(0.07 0.01 250);
+  --card-foreground: oklch(0.96 0.005 80);
+  --popover: oklch(0.08 0.01 250);
+  --popover-foreground: oklch(0.96 0.005 80);
+
+  /* PRIMARY = Jewel Gold */
+  --primary: oklch(0.78 0.16 84);
+  /* Rich warm gold */
+  --primary-foreground: oklch(0.05 0.01 30);
+
+  /* ACCENT = Champagne / warm cream */
+  --accent: oklch(0.88 0.06 90);
+  /* Creamy warm white-gold */
+  --accent-foreground: oklch(0.05 0.01 30);
+
+  --secondary: oklch(0.55 0.08 265);
+  --secondary-foreground: oklch(0.96 0 0);
+  --muted: oklch(0.16 0.01 250);
+  --muted-foreground: oklch(0.58 0.01 80);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.16 0.02 250);
+  --input: oklch(0.09 0.01 250);
+  --ring: oklch(0.78 0.16 84);
+
+  --chart-1: oklch(0.78 0.16 84);
+  --chart-2: oklch(0.88 0.06 90);
+  --chart-3: oklch(0.55 0.08 265);
+  --chart-4: oklch(0.6 0.12 30);
+  --chart-5: oklch(0.65 0.1 190);
+  --sidebar: oklch(0.06 0.01 250);
+  --sidebar-foreground: oklch(0.96 0.005 80);
+  --sidebar-primary: oklch(0.78 0.16 84);
+  --sidebar-primary-foreground: oklch(0.05 0.01 30);
+  --sidebar-accent: oklch(0.12 0.01 250);
+  --sidebar-accent-foreground: oklch(0.96 0.005 80);
+  --sidebar-border: oklch(0.16 0.02 250);
+  --sidebar-ring: oklch(0.78 0.16 84);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================
+   CORE ANIMATIONS
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(200, 160, 40, 0.3), 0 0 40px rgba(200, 160, 40, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(200, 160, 40, 0.6), 0 0 60px rgba(200, 160, 40, 0.25);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes planet-ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes stellar-pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Gold shimmer sweep */
+@keyframes gold-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Card flip (reservation) */
+@keyframes card-flip-in {
+  0% {
+    transform: perspective(1200px) rotateY(-90deg) scale(0.8);
+    opacity: 0;
+  }
+
+  60% {
+    transform: perspective(1200px) rotateY(8deg) scale(1.02);
+    opacity: 1;
+  }
+
+  100% {
+    transform: perspective(1200px) rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes dust-drift {
+
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateX(30px) translateY(-20px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes neon-pulse {
+
+  0%,
+  100% {
+    border-color: rgba(200, 160, 40, 0.2);
+    box-shadow: 0 0 8px rgba(200, 160, 40, 0.08);
+  }
+
+  50% {
+    border-color: rgba(200, 160, 40, 0.5);
+    box-shadow: 0 0 20px rgba(200, 160, 40, 0.18);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+  }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in-bottom 0.6s ease-out;
+}
+
+.animate-planet-ripple {
+  animation: planet-ripple 600ms ease-out;
+}
+
+.animate-stellar-pulse {
+  animation: stellar-pulse 300ms ease-out;
+}
+
+.animate-dust {
+  animation: dust-drift 8s ease-in-out infinite;
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+.animate-card-flip {
+  animation: card-flip-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Gold shimmer text */
+.text-gold-shimmer {
+  background: linear-gradient(90deg,
+      #b8860b 0%,
+      #ffd700 25%,
+      #fffacd 45%,
+      #ffd700 65%,
+      #b8860b 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 4s linear infinite;
+}
+
+/* Glass cards */
+.glass-card {
+  background: linear-gradient(135deg, rgba(12, 10, 20, 0.88) 0%, rgba(8, 6, 14, 0.96) 100%);
+  border: 1px solid rgba(200, 160, 40, 0.15);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Card flip container */
+.card-flip-enter {
+  animation: card-flip-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(0.04 0.008 250);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 160, 40, 0.4);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 160, 40, 0.7);
+}
+
+/* Selection */
+::selection {
+  background: rgba(200, 160, 40, 0.3);
+  color: white;
+}
+
+/* Gold border glow utility */
+.border-gold {
+  border-color: rgba(200, 160, 40, 0.3);
+}
+
+.shadow-gold {
+  box-shadow: 0 0 20px rgba(200, 160, 40, 0.15), 0 0 40px rgba(200, 160, 40, 0.05);
+}
+
+.shadow-gold-lg {
+  box-shadow: 0 0 40px rgba(200, 160, 40, 0.25), 0 0 80px rgba(200, 160, 40, 0.08);
+}
+
+/* Glow text */
+.text-glow-gold {
+  text-shadow: 0 0 20px rgba(200, 160, 40, 0.6), 0 0 60px rgba(200, 160, 40, 0.2);
+}
+
+.text-glow-white {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   GLOBAL CLICK / PRESS EFFECTS
+   ============================================ */
+
+/* Gold ripple for footer links/icons */
+@keyframes ripple-gold {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Mars crimson ripple for nav / hero buttons */
+@keyframes ripple-mars {
+  0% {
+    transform: scale(0);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Every interactive element gets a subtle press scale */
+button,
+a,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active,
+a:active {
+  transform: scale(0.96);
+}
+
+/* Card press effect */
+.card-press:active {
+  transform: scale(0.97) translateY(2px);
+  box-shadow: 0 2px 12px rgba(200, 160, 40, 0.1) !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Glow burst on click (applied via JS class toggle) */
+@keyframes click-burst {
+  0% {
+    box-shadow: 0 0 0px rgba(255, 215, 0, 0);
+  }
+
+  30% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.35), 0 0 60px rgba(255, 215, 0, 0.12);
+  }
+
+  100% {
+    box-shadow: 0 0 0px rgba(255, 215, 0, 0);
+  }
+}
+
+.click-burst {
+  animation: click-burst 0.45s ease-out forwards;
+}
+
+/* Image overlay shimmer — for dish cards */
+@keyframes img-shimmer {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%) skewX(-15deg);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(100%) skewX(-15deg);
+  }
+}
+
+.img-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 215, 0, 0.12) 50%, transparent 100%);
+  animation: img-shimmer 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Mars red scroll indicator — animated ring */
+@keyframes mars-pulse-ring {
+  0% {
+    transform: scale(0.85);
+    box-shadow: 0 0 0 0 rgba(180, 30, 0, 0.5);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(180, 30, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.85);
+    box-shadow: 0 0 0 0 rgba(180, 30, 0, 0);
+  }
+}
+
+.animate-mars-ring {
+  animation: mars-pulse-ring 2s ease-out infinite;
+}
+
+/* Glowing focus ring for form inputs */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* ============================================
+   MARS SCROLL ATMOSPHERE
+   ============================================ */
+
+/* Applied to bottom of page sections as you scroll deep */
+.mars-dust-bottom {
+  position: relative;
+}
+
+.mars-dust-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, rgba(120, 20, 0, 0.12) 0%, transparent 100%);
+  pointer-events: none;
+}
