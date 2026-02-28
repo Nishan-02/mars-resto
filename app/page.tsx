@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState, useCallback } from "react"
 import dynamic from "next/dynamic"
 import { HeroSection } from "@/components/hero-section"
 import { Navbar } from "@/components/navbar"
@@ -22,25 +22,49 @@ const FloatingPlanets = dynamic(
   { ssr: false }
 )
 
+const SolarSystemLanding = dynamic(
+  () => import("@/components/solar-system-landing").then((mod) => mod.SolarSystemLanding),
+  { ssr: false }
+)
+
 export default function Home() {
+  const [showSite, setShowSite] = useState(false)
+  const [showLanding, setShowLanding] = useState(true)
+
   // Always start at the top of the page (Hero section)
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" })
   }, [])
 
+  const handleLandingComplete = useCallback(() => {
+    setShowLanding(false)
+    setShowSite(true)
+    window.scrollTo({ top: 0, behavior: "instant" })
+  }, [])
+
   return (
-    <main className="relative z-0">
-      <SpaceBackground />
-      <FloatingPlanets />
-      <Navbar />
-      <HeroSection />
-      <MarsDivider />
-      <AboutSection />
-      <MarsDivider />
-      <MenuSection />
-      <ReviewsSection />
-      <ContactSection />
-      <Footer />
-    </main>
+    <>
+      {/* Solar System Landing Intro */}
+      {showLanding && (
+        <SolarSystemLanding onEnter={handleLandingComplete} />
+      )}
+
+      {/* Main Site — revealed after landing */}
+      {showSite && (
+        <main className="relative z-0">
+          <SpaceBackground />
+          <FloatingPlanets />
+          <Navbar />
+          <HeroSection />
+          <MarsDivider />
+          <AboutSection />
+          <MarsDivider />
+          <MenuSection />
+          <ReviewsSection />
+          <ContactSection />
+          <Footer />
+        </main>
+      )}
+    </>
   )
 }
